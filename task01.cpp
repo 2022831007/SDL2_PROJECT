@@ -11,13 +11,12 @@ void drawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
 }
 
 int SDL_main(int argc, char* argv[]) {
-    // Initialize SDL
+  
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return 1;
     }
 
-    // Create a window
     SDL_Window* window = SDL_CreateWindow("Made by Fatema 07",
                                           SDL_WINDOWPOS_UNDEFINED,
                                           SDL_WINDOWPOS_UNDEFINED,
@@ -30,7 +29,7 @@ int SDL_main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Create a renderer
+
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     if (renderer == nullptr) {
@@ -40,20 +39,17 @@ int SDL_main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Clear the renderer
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    // Set drawing color to blue
+
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
-    // Draw a circle
-    drawCircle(renderer, 320, 240, 100);
 
-    // Present the renderer
+    drawCircle(renderer, 120, 240, 100);
+
     SDL_RenderPresent(renderer);
 
-    // Wait for user to close the window
     bool quit = false;
     SDL_Event event;
     while (!quit) {
@@ -64,7 +60,7 @@ int SDL_main(int argc, char* argv[]) {
         }
     }
 
-    // Clean up
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
